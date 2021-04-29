@@ -5,7 +5,13 @@ public class User {
     private String userEmail;
     private String userPassword;
     private String securityKey;
-    private double bankBalance;
+    private double bankBalance = 0;
+
+    public void createNewUser(String userEmail, String userPassword, String securityKey){
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.securityKey = securityKey;
+    }
 
     public String getUserEmail() {
         return userEmail;
