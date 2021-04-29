@@ -8,4 +8,8 @@ public class AtmController {
         RegisterInterface refInterface = new RegisterImplementation();
         refInterface.UserRegistration();
     }
+
+    public void callLoginService(){
+        System.out.println("Login...");
+    }
 }
