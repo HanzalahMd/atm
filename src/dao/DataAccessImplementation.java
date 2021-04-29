@@ -8,10 +8,9 @@ public class DataAccessImplementation implements DataAccessInterface{
 
     @Override
     public void createNewUser(String userEmail, String userPassword, String securityKey) {
-
         refUser = new User();
-        refUser.createNewUser(userEmail, userPassword, securityKey);
-
+        refUser.insertData(userEmail, userPassword, securityKey);
+        System.out.println("Registration Successful!!");
     }
 }
 

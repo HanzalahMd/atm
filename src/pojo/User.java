@@ -7,7 +7,7 @@ public class User {
     private String securityKey;
     private double bankBalance = 0;
 
-    public void createNewUser(String userEmail, String userPassword, String securityKey){
+    public void insertData(String userEmail, String userPassword, String securityKey){
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.securityKey = securityKey;

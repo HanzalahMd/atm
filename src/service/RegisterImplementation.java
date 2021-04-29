@@ -1,6 +1,7 @@
 package service;
 
 import dao.*;
+import pojo.User;
 
 import java.util.Scanner;
 
@@ -8,20 +9,35 @@ public class RegisterImplementation implements RegisterInterface {
 
     Scanner refScanner = new Scanner(System.in);
     DataAccessInterface refAccess;
+    boolean validated;
 
     @Override
     public void UserRegistration() {
 
-        System.out.println("Enter email address: ");
-        String userInputEmail = refScanner.next();
+        User existingUser = new User();
+        existingUser.insertData("xyz@gmail.com", "xyz", "xyz");
 
-        System.out.println("Enter Password: ");
-        String userInputPassword = refScanner.next();
+        while(!validated) {
+            try {
+                System.out.println("Enter email address: ");
+                String userInputEmail = refScanner.next();
 
-        System.out.println("What is favourite colour ?");
-        String userInputKey = refScanner.next();
+                if (userInputEmail.equals(existingUser.getUserEmail())) {
+                    throw new Exception("email already exists!!" + "\n");
+                }
 
-        refAccess = new DataAccessImplementation();
-        refAccess.createNewUser(userInputEmail, userInputPassword, userInputKey);
+                System.out.println("Enter Password: ");
+                String userInputPassword = refScanner.next();
+
+                System.out.println("What is favourite colour ?");
+                String userInputKey = refScanner.next();
+
+                refAccess = new DataAccessImplementation();
+                refAccess.createNewUser(userInputEmail, userInputPassword, userInputKey);
+                validated = true;
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
+        }
     }
 }
