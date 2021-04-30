@@ -7,27 +7,26 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        AtmController refController = new AtmController();
+        AtmController refController = new AtmController(); // initialize controller reference
         Scanner refScanner = new Scanner(System.in);
-        boolean sessionActive = true;
-//        int userChoice = 0;
+        boolean sessionActive = true; // always be true until the user logout.
 
-        while(sessionActive) {
+        while(sessionActive) { // will always run this loop while sessionActive is true
             System.out.println("\n User Home Page: \n 1) Register \n 2) Login \n 3) Forget Password \n 4) Logout \n");
             System.out.println("Enter you choice: ");
 
             int userChoice = refScanner.nextInt();
 
             if (userChoice == 1) {
-                refController.callRegisterService();
+                refController.callRegisterService(); // call register service in controller
             } else if (userChoice == 2){
-                refController.callLoginService();
+                refController.callLoginService(); // call login service in controller
             } else if (userChoice == 3){
-                refController.callResetService();
+                refController.callResetService(); // call reset service in controller
             } else if (userChoice == 4) {
-                sessionActive = false;
+                sessionActive = false; // to stop from running this while loop
                 System.out.println("Logout Successful");
-            } else {
+            } else { // for inputs other than 1-4
                 System.out.println("Invalid input");
             }
         }
