@@ -1,14 +1,15 @@
 package service;
 
 import dao.*;
-import pojo.User;
+import pojo.*;
 
 import java.util.Scanner;
 
-public class RegisterImplementation implements RegisterInterface {
+public class AtmImplementation implements AtmInterface {
 
     Scanner refScanner = new Scanner(System.in);
     DataAccessInterface refAccess;
+    boolean isAuthenticated;
 
     @Override
     public void UserRegistration() {
@@ -65,4 +66,23 @@ public class RegisterImplementation implements RegisterInterface {
             }
         } // End of while (!registrationComplete) loop
     } // End of userRegistration() method
+
+    @Override
+    public void userLogin() {
+
+        System.out.println("Enter User Email: ");
+        String userInputEmail = refScanner.next();
+
+        System.out.println("Enter Password: ");
+        String userInputPassword = refScanner.next();
+
+        isAuthenticated = refAccess.authenticateUser(userInputEmail, userInputPassword);
+
+        if(isAuthenticated){
+            System.out.println("Login Successful!!");
+        } else {
+            System.out.println("Sorry invalid credentials! Please try again. \n");
+            userLogin();
+        }
+    }
 }

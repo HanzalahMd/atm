@@ -1,11 +1,15 @@
 package pojo;
 
+import java.util.ArrayList;
+
 public class User {
 
-    private String userEmail;
+    private String userEmail = "as";
     private String userPassword;
     private String securityKey;
     private double bankBalance = 0;
+
+    ArrayList<User> userDB = new ArrayList<>();
 
     public void insertData(String userEmail, String userPassword, String securityKey){
         this.userEmail = userEmail;

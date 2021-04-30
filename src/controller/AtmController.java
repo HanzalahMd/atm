@@ -4,13 +4,15 @@ import service.*;
 
 public class AtmController {
 
+    AtmInterface refInterface;
+
     public void callRegisterService(){
-        RegisterInterface refInterface = new RegisterImplementation();
+        refInterface = new AtmImplementation();
         refInterface.UserRegistration();
     }
 
     public void callLoginService(){
-        System.out.println("Login...");
+        refInterface.userLogin();
     }
 
     public void callResetService(){
