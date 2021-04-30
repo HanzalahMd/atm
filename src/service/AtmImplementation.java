@@ -16,7 +16,6 @@ public class AtmImplementation implements AtmInterface {
 
         String userInputEmail = null;
         String userInputPassword = null;
-        String userInputKey;
         boolean emailValidated = false;
         boolean passwordEntered = false;
         boolean passwordValidated = false;
@@ -54,7 +53,7 @@ public class AtmImplementation implements AtmInterface {
                 } // End of while (!passwordValidated) loop
 
                 System.out.println("What is favourite colour ?");
-                userInputKey = refScanner.next();
+                String userInputKey = refScanner.next();
                 System.out.println(userInputKey + " is your security key, in case if you forget your password.");
 
                 refAccess = new DataAccessImplementation();
@@ -122,15 +121,37 @@ public class AtmImplementation implements AtmInterface {
     }
 
     @Override
-    public void resetPassword() {
+    public void resetPassword() throws Exception {
+
+        String newPassword = null;
+        boolean passwordValidated = false;
+        boolean passwordEntered = false;
 
         if(!checkSecurityKey()){
             System.out.println("Wrong security key");
         }
 
-        System.out.println("Enter new password: ");
-        String newPassword = refScanner.next();
-//        refAccess.authenticateUser()
+        while (!passwordValidated) {
+            if(!passwordEntered) {
+                System.out.println("Enter Password: ");
+                newPassword = refScanner.next();
+                passwordEntered = true;
+            } else {
+                System.out.println("Retype Password: ");
+                String confirmPassword = refScanner.next();
+
+                if (!confirmPassword.equals(newPassword)) {
+                    throw new Exception("Password doesn't match!!");
+                }
+                passwordValidated = true;
+            }
+        }
+
+        System.out.println("What is favourite colour ?");
+        String newSecurityKey = refScanner.next();
+        System.out.println(newSecurityKey + " is your security key, in case if you forget your password.");
+
+        refAccess.resetPassword(newPassword, newSecurityKey);
     }
 
     public boolean checkSecurityKey(){

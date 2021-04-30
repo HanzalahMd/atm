@@ -7,5 +7,5 @@ public interface DataAccessInterface {
     void checkBalance();
     void depositAmount();
     void withdrawAmount();
-    void resetPassword();
+    void resetPassword(String newPassword, String newSecurityKey);
 }
