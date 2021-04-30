@@ -3,5 +3,5 @@ package service;
 public interface AtmInterface {
     void UserRegistration();
     void userLogin();
-    void resetPassword() throws Exception;
+    void resetPassword();
 }

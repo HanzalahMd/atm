@@ -16,7 +16,7 @@ public class AtmController {
         refInterface.userLogin(); // call userLogin in AtmImplementation
     }
 
-    public void callResetService() throws Exception {
+    public void callResetService() {
         refInterface.resetPassword();
     }
 }

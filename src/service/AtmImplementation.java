@@ -121,7 +121,7 @@ public class AtmImplementation implements AtmInterface {
     }
 
     @Override
-    public void resetPassword() throws Exception {
+    public void resetPassword() {
 
         String newPassword = null;
         boolean passwordValidated = false;
@@ -132,18 +132,22 @@ public class AtmImplementation implements AtmInterface {
         }
 
         while (!passwordValidated) {
-            if(!passwordEntered) {
-                System.out.println("Enter Password: ");
-                newPassword = refScanner.next();
-                passwordEntered = true;
-            } else {
-                System.out.println("Retype Password: ");
-                String confirmPassword = refScanner.next();
+            try {
+                if (!passwordEntered) {
+                    System.out.println("Enter Password: ");
+                    newPassword = refScanner.next();
+                    passwordEntered = true;
+                } else {
+                    System.out.println("Retype Password: ");
+                    String confirmPassword = refScanner.next();
 
-                if (!confirmPassword.equals(newPassword)) {
-                    throw new Exception("Password doesn't match!!");
+                    if (!confirmPassword.equals(newPassword)) {
+                        throw new Exception("Password doesn't match!!");
+                    }
+                    passwordValidated = true;
                 }
-                passwordValidated = true;
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
             }
         }
 

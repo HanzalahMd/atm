@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         AtmController refController = new AtmController(); // initialize controller reference
         Scanner refScanner = new Scanner(System.in);
         boolean sessionActive = true; // always be true until the user logout.
