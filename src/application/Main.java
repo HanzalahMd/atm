@@ -10,6 +10,7 @@ public class Main {
         AtmController refController = new AtmController();
         Scanner refScanner = new Scanner(System.in);
         boolean sessionActive = true;
+//        int userChoice = 0;
 
         while(sessionActive) {
             System.out.println("\n User Home Page: \n 1) Register \n 2) Login \n 3) Forget Password \n 4) Logout \n");

@@ -17,6 +17,21 @@ public class DataAccessImplementation implements DataAccessInterface{
     public boolean authenticateUser(String userEmail, String userPassword) {
         return userEmail.equals(refUser.getUserEmail()) && userPassword.equals(refUser.getUserPassword());
     }
+
+    @Override
+    public void checkBalance(){
+        System.out.println("check");
+    }
+
+    @Override
+    public void depositAmount(){
+        System.out.println("deposit");
+    }
+
+    @Override
+    public void withdrawAmount(){
+        System.out.println("withdraw");
+    }
 }
 
 
