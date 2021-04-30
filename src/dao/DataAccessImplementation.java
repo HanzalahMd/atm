@@ -8,7 +8,6 @@ public class DataAccessImplementation implements DataAccessInterface{
 
     User refUser;
     Scanner refScanner = new Scanner(System.in);
-    double bankBalance = refUser.getBankBalance();
 
     @Override
     public void createNewUser(String userEmail, String userPassword, String securityKey) {
@@ -24,7 +23,7 @@ public class DataAccessImplementation implements DataAccessInterface{
 
     @Override
     public void checkBalance(){
-        System.out.println(refUser.getBankBalance());
+        System.out.println("Your bank balance is $" + refUser.getBankBalance());
     }
 
     @Override
@@ -35,9 +34,9 @@ public class DataAccessImplementation implements DataAccessInterface{
         if(amount < 0){
             System.out.println("Amount can't be negative!!");
         } else {
-            refUser.setBankBalance(bankBalance + amount);
+            refUser.setBankBalance(refUser.getBankBalance() + amount);
             System.out.println("$" + amount + " deposited successfully!");
-            System.out.println("Your new balance is $" + bankBalance);
+            System.out.println("Your new balance is $" + refUser.getBankBalance());
         }
     }
 
@@ -46,12 +45,12 @@ public class DataAccessImplementation implements DataAccessInterface{
         System.out.println("Enter Amount to withdraw:");
         double amount = refScanner.nextDouble();
 
-        if(amount > bankBalance){
+        if(amount > refUser.getBankBalance()){
             System.out.println("Sorry!! insufficient balance.");
         } else {
-            refUser.setBankBalance(bankBalance - amount);
+            refUser.setBankBalance(refUser.getBankBalance() - amount);
             System.out.println("Transaction successful!");
-            System.out.println("Your new balance is $" + bankBalance);
+            System.out.println("Your new balance is $" + refUser.getBankBalance());
         }
     }
 }

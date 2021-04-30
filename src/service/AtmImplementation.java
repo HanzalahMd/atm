@@ -93,9 +93,9 @@ public class AtmImplementation implements AtmInterface {
 
         while(continueTransaction) {
             System.out.println();
-            System.out.println("Type 1 : Check Available Bank Balance " + "\n"
-                    + "Type 2 : Deposit Amount" + "\n"
-                    + "Type 3 : Withdraw Amount");
+            System.out.println("(1) Check Available Bank Balance " + "\n"
+                    + "(2) Deposit Amount" + "\n"
+                    + "(3) Withdraw Amount");
 
             System.out.println("Enter Your Choice: ");
             int userChoice = refScanner.nextInt();
