@@ -1,7 +1,7 @@
 package service;
 
 public interface AtmInterface {
-    void UserRegistration();
+    void userRegistration();
     void userLogin();
     void resetPassword();
 }
