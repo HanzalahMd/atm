@@ -89,21 +89,33 @@ public class AtmImplementation implements AtmInterface {
 
     public void beginTransaction(){
 
-        System.out.println();
-        System.out.println("Type 1 : Check Available Bank Balance " + "\n"
-                + "Type 2 : Deposit Amount" + "\n"
-                + "Type 3 : Withdraw Amount");
+        boolean continueTransaction = true;
 
-        System.out.println("Enter Your Choice: ");
+        while(continueTransaction) {
+            System.out.println();
+            System.out.println("Type 1 : Check Available Bank Balance " + "\n"
+                    + "Type 2 : Deposit Amount" + "\n"
+                    + "Type 3 : Withdraw Amount");
 
-        int userChoice = refScanner.nextInt();
+            System.out.println("Enter Your Choice: ");
+            int userChoice = refScanner.nextInt();
 
-        if(userChoice == 1){
-            refAccess.checkBalance();
-        } else if (userChoice == 2){
-            refAccess.depositAmount();
-        } else if (userChoice == 3){
-            refAccess.withdrawAmount();
+            if (userChoice == 1) {
+                refAccess.checkBalance();
+            } else if (userChoice == 2) {
+                refAccess.depositAmount();
+            } else if (userChoice == 3) {
+                refAccess.withdrawAmount();
+            } else {
+                System.out.println("Choice not available!");
+            }
+
+            System.out.println("Wish to continue? (y/n)");
+            String option = refScanner.next();
+
+            if (option.equals("n")){
+                continueTransaction = false;
+            }
         }
     }
 }
