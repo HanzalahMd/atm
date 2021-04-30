@@ -127,35 +127,36 @@ public class AtmImplementation implements AtmInterface {
         boolean passwordValidated = false;
         boolean passwordEntered = false;
 
-        if(!checkSecurityKey()){
-            System.out.println("Wrong security key");
-        }
+        if(checkSecurityKey()) {
 
-        while (!passwordValidated) {
-            try {
-                if (!passwordEntered) {
-                    System.out.println("Enter Password: ");
-                    newPassword = refScanner.next();
-                    passwordEntered = true;
-                } else {
-                    System.out.println("Retype Password: ");
-                    String confirmPassword = refScanner.next();
+            while (!passwordValidated) {
+                try {
+                    if (!passwordEntered) {
+                        System.out.println("Enter Password: ");
+                        newPassword = refScanner.next();
+                        passwordEntered = true;
+                    } else {
+                        System.out.println("Retype Password: ");
+                        String confirmPassword = refScanner.next();
 
-                    if (!confirmPassword.equals(newPassword)) {
-                        throw new Exception("Password doesn't match!!");
+                        if (!confirmPassword.equals(newPassword)) {
+                            throw new Exception("Password doesn't match!!");
+                        }
+                        passwordValidated = true;
                     }
-                    passwordValidated = true;
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
                 }
-            } catch (Exception e) {
-                System.err.println(e.getMessage());
             }
+
+            System.out.println("What is favourite colour ?");
+            String newSecurityKey = refScanner.next();
+            System.out.println(newSecurityKey + " is your security key, in case if you forget your password.");
+
+            refAccess.resetPassword(newPassword, newSecurityKey);
+        } else {
+            System.out.println("Sorry! Wrong security key.");
         }
-
-        System.out.println("What is favourite colour ?");
-        String newSecurityKey = refScanner.next();
-        System.out.println(newSecurityKey + " is your security key, in case if you forget your password.");
-
-        refAccess.resetPassword(newPassword, newSecurityKey);
     }
 
     public boolean checkSecurityKey(){
