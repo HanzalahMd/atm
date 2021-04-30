@@ -27,6 +27,8 @@ public class Main {
             } else if (userChoice == 4) {
                 sessionActive = false;
                 System.out.println("Logout Successful");
+            } else {
+                System.out.println("Invalid input");
             }
         }
     }
