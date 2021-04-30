@@ -67,6 +67,7 @@ public class AtmImplementation implements AtmInterface {
         } // End of while (!registrationComplete) loop
     } // End of userRegistration() method
 
+
     @Override
     public void userLogin() {
 
@@ -86,6 +87,7 @@ public class AtmImplementation implements AtmInterface {
             userLogin();
         }
     }
+
 
     public void beginTransaction(){
 
@@ -117,5 +119,28 @@ public class AtmImplementation implements AtmInterface {
                 continueTransaction = false;
             }
         }
+    }
+
+    @Override
+    public void resetPassword() {
+
+        if(!checkSecurityKey()){
+            System.out.println("Wrong security key");
+        }
+
+        System.out.println("Enter new password: ");
+        String newPassword = refScanner.next();
+//        refAccess.authenticateUser()
+    }
+
+    public boolean checkSecurityKey(){
+
+        System.out.println("Enter User Email: ");
+        String userInputEmail = refScanner.next();
+
+        System.out.println("Enter Security Key: ");
+        String userInputKey = refScanner.next();
+
+        return refAccess.checkSecurityKey(userInputEmail, userInputKey);
     }
 }

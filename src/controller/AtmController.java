@@ -1,18 +1,19 @@
 package controller;
 
-import service.*;
+import service.AtmInterface;
+import service.AtmImplementation;
 
 public class AtmController {
 
-    AtmInterface refInterface;
+    AtmInterface refInterface; // initialize AtmInterface reference
 
     public void callRegisterService(){
         refInterface = new AtmImplementation();
-        refInterface.UserRegistration();
+        refInterface.UserRegistration(); // call userRegistration in AtmImplementation
     }
 
     public void callLoginService(){
-        refInterface.userLogin();
+        refInterface.userLogin(); // call userLogin in AtmImplementation
     }
 
     public void callResetService(){

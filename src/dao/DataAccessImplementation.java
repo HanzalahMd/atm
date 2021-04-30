@@ -22,6 +22,11 @@ public class DataAccessImplementation implements DataAccessInterface{
     }
 
     @Override
+    public boolean checkSecurityKey(String userEmail, String securityKey) {
+        return userEmail.equals(refUser.getUserEmail()) && securityKey.equals(refUser.getSecurityKey());
+    }
+
+    @Override
     public void checkBalance(){
         System.out.println("Your bank balance is $" + refUser.getBankBalance());
     }
@@ -52,6 +57,11 @@ public class DataAccessImplementation implements DataAccessInterface{
             System.out.println("Transaction successful!");
             System.out.println("Your new balance is $" + refUser.getBankBalance());
         }
+    }
+
+    @Override
+    public void resetPassword() {
+
     }
 }
 
