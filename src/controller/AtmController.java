@@ -5,11 +5,11 @@ import service.AtmImplementation;
 
 public class AtmController {
 
-    AtmInterface refInterface; // initialize AtmInterface reference
+    AtmInterface refInterface; // initialize AtmInterface reference, all methods will access the same User object
 
     public void callRegisterService(){
         refInterface = new AtmImplementation();
-        refInterface.UserRegistration(); // call userRegistration in AtmImplementation
+        refInterface.userRegistration(); // call userRegistration in AtmImplementation
     }
 
     public void callLoginService(){
@@ -17,6 +17,6 @@ public class AtmController {
     }
 
     public void callResetService() {
-        refInterface.resetPassword();
+        refInterface.resetPassword(); // call resetPassword in AtmImplementation
     }
 }
