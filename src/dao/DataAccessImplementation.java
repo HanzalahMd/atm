@@ -61,7 +61,6 @@ public class DataAccessImplementation implements DataAccessInterface{
 
     @Override
     public void resetPassword(String newPassword, String newSecurityKey) {
-
         refUser.setUserPassword(newPassword);
         refUser.setSecurityKey(newSecurityKey);
         System.out.println("Your password has been reset successfully.");
