@@ -2,6 +2,7 @@
 
 ## Features
 This is console based Java Application (ATM) which has the following features below:
+
 - Register new user with email address, password and security key.
 - Validate new userEmail with existing user, and handle exception for password mismatch.
 - User login and authentication.

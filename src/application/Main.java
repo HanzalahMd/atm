@@ -1,3 +1,5 @@
+// This is console based Java Application (ATM)
+
 package application;
 
 import controller.AtmController;
